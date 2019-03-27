@@ -1,4 +1,4 @@
-\documentclass[a4paper]{scrreprt}
+\documentclass[parskip=full, a4paper]{scrreprt}
 
 %%% PACKAGES %%%
 
@@ -75,6 +75,12 @@ sortlocale=de_DE
 \addto\captionsngerman{
 	\renewcommand{\contentsname}{Traktanden}
 }
+
+%%% Not clearpage before chapter
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\scr@startchapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
 %%% DOCUMENT %%%
 
 \begin{document}
@@ -116,8 +122,6 @@ Abwesend & Prof. Martin Jud & \\
 	\noindent
 
 \tableofcontents
-\clearpage
-\renewcommand{\clearpage}{}
 \chapter{Protokoll und Aufgabenstellung}
 
 Es wurde kurz das Protokoll der letzten auf Sitzung gegengefragt ob dieses so korrekt sei. Herr Märki bestätigte, die Korrektheit des Protokolls. 
@@ -145,10 +149,56 @@ Herr Märki fragt ob dieser Algorithmus spezifiziert sei. Herr Baumann erwiderte
 Weiter fragte Herr Märki ob nicht Mehrere Tags aufs mal gelesen werden könne, Herr Wicki erwiederte, dass der Roboter eine Geschwindigkeit von maximal 24m/s haben dürfte, wenn nur ein Tag gelesen werden würde. Der Roboter bewege sich jedoch nur 6m/s womit bei dieser geringeren Geschwindigkeit 3 Tags auf einmal abgesucht werden können. 
 Herr Märki führte noch an, dass es sehr aufwändig ist in der Gasse nach einem Exemplar zu suchen, daher wäre es nützlich könne man gleich mehrere Tags absuchen. 
 
-Herr Wicki erklärte anschliessend, dass in diesem Konzept 2 Suchmodi zum Einsatz kämen. Dies aus dem Grund, dass RFID HF eine Theoretische Maximale Distanz von 1m beträgt. Die Distanz im Hochregallager beträgt jedoch 1.2m, da zwei Behälter jeweils hintereinander gelagert werden. Es ist in diesem Konzept dementsprechend nicht möglich mit der Vorbeifahrt die Tags der hinteren Box herauszulesen. Daher kämen zwei Suchmodi zum Einsatz, der Erste würde eine Oberflächliche Suche starten, welche lediglich den vorderen Behälter nach dem Tag absucht. Somit könnte eine Abdeckung von ca. 50% gewährleistet werden. 
+Herr Wicki erklärte anschliessend, dass in diesem Konzept 2 Suchmodi zum Einsatz kämen. Dies aus dem Grund, dass RFID HF eine Theoretische Maximale Distanz von 1m beträgt. Die Distanz im Hochregallager beträgt jedoch 1.2m, da zwei Behälter jeweils hintereinander gelagert werden. Es ist in diesem Konzept dementsprechend nicht möglich mit der Vorbeifahrt die Tags der hinteren Box herauszulesen. Daher kämen zwei Suchmodi zum Einsatz, der Erste würde eine Oberflächliche Suche starten, welche lediglich den vorderen Behälter nach dem Tag absucht. Somit könnte eine Abdeckung von ca. 50\% gewährleistet werden. 
 Weiter führte Herr Wicki auf, dass für den ersten Suchmodus dieses Konzeptes mehrere Antennen um die Rechte wie auch die Linke Gasse simultan auslesen zu können. Die Dauer dieses Suchmodus Beträge gut drei Minuten pro Gasse. 
 
-Herr Märki stellte anschliessend die Frage, ob  
+Herr Märki stellte anschliessend die Frage, ob der Roboter auch in der Höhe die Behälter absucht. Herr Wicki verwies auf die Graphik \ref{fig:antennenpos}, auf welcher aufgezeigt wird, dass bei Position 2 und 3 die Obere wie auch die Untere Reihe zur Selben Zeit gelesen werden sollen um so nur jede 3 Reihe durchfahren zu müssen. Dies müsse jedoch in einem Proof of Concept evaluiert werden.
+Herr Märki stellte fest, dass die Positionierung der Pos. 3 Direkt auf das Metall des Roboters ausgerichtet wäre. Herr Baumann erwiederte, dass ein Vorteil von RFID HF gegenüber RFID UHF in der geringen Störung durch Metall liegt.
+
+\begin{figure}
+	\centering
+	\includegraphics[keepaspectratio, width=0.8\linewidth]{images/Konzept_1_Drawings3.pdf}
+	\caption{Positionen der Antennen}
+	\label{fig:antennenpos}
+\end{figure}
+
+Herr Wicki erklärte weiter, dass beim Suchmodus Nummer zwei die Boxen der vorderen Reihe ausgetauscht werden würden. Dazu müsste gemäss diesen Konzeptes die bestehende Verwaltungssoftware erweitert werden. Damit der Roboter autonom die Boxen absuchen könnte. Herr Wicki führte auf, dass dieser Suchvorgang ca. 4h dauert pro Reihe, sofern der Austausch 2er Boxen nicht länger als 10s betrage. Sobald der Lesebehälter die Position eines Vorderen Behälters eingenommen hat sollen gleich alle neun hinteren Behälter ausgelesen werden gemäss den Antennenpositionen auf \ref{fig:antennenpos}. Somit kann eine Geschwindigkeitssteigerung des Faktors 9 erreicht werden. Der Vorteil dieses Konzeptes läge in der Abdeckung von bis zu 100\%. Herr Wicki fasste zusammen, dass die Störung durch Metall wie auch die Interferencen mehrere Antennen noch in einem Proof of Concept eruiert werden müssen. Und eben diese Faktoren sehr grosses Fehlerpotential in diesem Konzept aufweisen.
+
+Herr Wicki zeigte nochmals die Antennenpositionen auf der Graphik \ref{fig:antennenpos}. Dabei sollen die Positionen 4 - 6 Lediglich für den zweiten Suchmodus verwendet werden.
+Herr Märki fragte darauf, ob beide Reihen gelesen werden können. Herr Wicki bestätigte dies, dass bei Suchmodus zwei Beide Reihen gelesen werden könnten.
+Herr Baumann Zweichnete anschliessend eine Graphik (wie Graphik \ref{fig:boxenposition}), welche die Position der Box veranschaulicht. Dabei erklärte er, dass die 9 Hinteren 9 Boxen simultan gelesen werden.
+
+\begin{figure}
+	\centering
+	\includegraphics[keepaspectratio, width=0.8\linewidth]{images/Konzept_1_Drawings3.pdf}
+	\caption{Positionen der Antennen}
+	\label{fig:antennenpos}
+\end{figure}
+
+Herr Märki wies dabei noch darauf hin, dass die Positionen der Behälter nicht fix ist, sie also über den Tag an neue Positionen gelangen können. Herr Wicki erklärte, dass diese nur beim Zeitpunkt der Auslese relevant sei, da anschliessend mit der Behälter ID gearbeitet werden sollen.
+Her Märki fragte anschliessen, dass man so jedoch wissen müsse, welcher Behälter sich auf einer Bestimmten Position befinden würde. Herr Wicki wie Herr Baumann bestätigten dies.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Herr Märki wies dabei noch darauf hin, dass es momentan keine Möglichkeit gäbe die Positionen zu kennen, da diese flüchtig seien. Herr Wicki entgegnete, dass eine Voraussetzung für dieses Konzept eine entsprechende Anpassung der Lagerverwaltungssoftware beinhalte, bei welcher es teilweise um genau jenes Problem handle.
+
 
 \chapter{Präsentation Konzept 2}
 
