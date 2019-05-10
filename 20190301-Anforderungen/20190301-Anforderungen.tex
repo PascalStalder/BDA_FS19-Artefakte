@@ -106,10 +106,12 @@ Zeil: Mittels einer Machbarkeitsstudie und einem Proof of Concept soll untersuch
 	\item Das Proof of Concept muss technisch aufzeigen, wie viele RFID Tags in einer Sekunde gelesen werden können.
 	\item Das Proof of Concept soll eine RFID Lesezuverlässigkeit von 95\% aufweisen.
 	
-	\item Das MVP soll mit der Datenbank des Lagersystems kommunizieren können.
-	\item Das MVP soll in einem von Störfaktoren bereinigten Zustand die gleiche Anzahl RFID Tags lesen können wie im Proof of Concept definiert.
-	\item Das MVP soll erkennen, wenn eine Box ein Exemplar enthält, welches nicht dieser Box zugehörig ist und dies als eine Unstimmigkeit markieren.
-	\item Das MVP soll in der Lage sein, dem Endbenutzer in beliebiger Form mitzuteilen (kann Akustisch, Visuell oder durch Ausschleusen gelöst werden), welcher Behälter eine Unstimmigkeit enthält.
+	\item Das MVP soll mit einer Oracle Datenbank kommunizieren können.
+	\item Das MVP soll erkennen, wenn eine Box ein Exemplar (eines, welches mit RFID ausgestattet ist und technisch auch Lesbar ist) enthält, welches nicht dieser Box zugehörig ist.
+	\item Das MVP soll jede Unstimmigkeit (Exemplar, welches nicht zu diesem Behälter gehört) in einem Logdokument persistieren.
+	\item Das MVP soll in der Lage sein, dem Endbenutzer in graphischer Form durch einen Consolenoutput mitzuteilen, welcher Behälter eine Unstimmigkeit enthält.
+	\item Das MVP soll die unter Laborbedingungen erhaltenen Resultate unter Realbedingungen verifizieren.
+	\item das MVP ist in der Lage die Buch ID eines Exemplares über RFID auszulesen.
 \end{itemize}
 
 \vfill
