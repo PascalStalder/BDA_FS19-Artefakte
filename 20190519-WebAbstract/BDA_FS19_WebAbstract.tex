@@ -55,6 +55,9 @@
 
 \usepackage[absolute]{textpos}
 
+% Change line spacing
+\renewcommand{\baselinestretch}{0.9}
+
 %%% PATH DEFINITIONS %%%
 % Define the path were images are found
 \graphicspath{{./img/}{./pdf/}}
@@ -65,14 +68,15 @@
 
 \pagenumbering{gobble}
 
-\begin{textblock*}{5cm}[0,0](15.1cm,1cm)
+\begin{textblock*}{5cm}[0,0](15cm,0.7cm)
 	\includegraphics[keepaspectratio,width=5cm]{img/HSLU_Logo}
 \end{textblock*}
 
 \vspace*{2cm}
 
 \noindent
-\textbf{\Huge{RFID markierte Exemplare}} \\
+\textbf{\LARGE{Suche von mit RFID-ausgerüsteten Einzelexemplaren in vollautomatischem
+Behälter-Hochregallager}} \\
 
 \vspace{0.5em}
 
@@ -81,38 +85,61 @@
 \setlength\tabcolsep{0cm}
 
 % Table itself
-\begin{Large}
+\begin{large}
 \noindent
 \begin{tabularx}{\textwidth}{p{5cm}X}
-	\textbf{Themenbereiche:} & \\
+	\textbf{Themenbereiche:} & RFID, Automatisierte Arbeitsprozesse, Machbarkeitsstudie\\
 	\textbf{Studierende:} & Pascal Baumann, Dane Wicki\\
 	\textbf{Betreuungsperson:} & Martin Jud\\
 	\textbf{Experte:} & Urs Gehrig\\
-	\textbf{Auftraggebende:} & Speicherbibliothek Luzern\\
-	\textbf{Keywords:} & RFID, Machbarkeitsstudie\\
+	\textbf{Auftraggebende:} & Verein Kooperative Speicherbibliothek Schweiz\\
+	\textbf{Keywords:} & Logistik, RFID, Machbarkeitsstudie, Suchalgorithmus\\
 \end{tabularx}
-\end{Large}
+\end{large}
 \egroup
 
 \section{Aufgabenstellung}
+Im Hochregallager der Speicherbibliothek werden momentan bis zu 110'000 Behältern mit verschiedenen Exemplaren (von welchen viele mit RFID Tags ausgestattet sind) gelagert. Die Behälter werden manuell von Menschen befüllt und anschliessend wird der Behälter voll autonom an einen Lagerplatz gefahren. Zeitweise können auch gewisse Exemplare wieder aus den Behältern entnommen werden um dieses Exemplar zu Lesen, Scannen oder einer der teilnehmenden Bibliotheken zurückzusenden. Während dem Vorgang des Lagerns und Entnehmen der Exemplare werden weiterhin Menschen für das Befüllen und Pflegen der Behälter verwendet. Dies birgt die Gefahr, dass eine Person aus Versehen ein Exemplar in einen falschen Behälter einsortiert. Und so das Exemplar nur sehr umständlich wiedergefunden werden kann.
+
+Mit dieser Arbeit soll "mittels einer Machbarkeitsstudie und einem Proof of Concept untersucht werden wie technisch realisiert werden kann, solche mit RFID-ausgerüstete Einzel\-exemplare (Bücher, Zeitschriften, etc.) im vollautomatischen Behälter-Hochregallager mit bis zu 3.1 Mio. Exemplaren zu identifizieren und zu finden".
+
+Insbesondere sind dem Kunden folgende Resultate vorzulegen:
+\begin{itemize}[noitemsep]
+	\item Zwei ausgearbeiteten Konzepte
+	\item Eine Machbarkeitsstudie zu einem ausgewählten Konzept
+	\item Eine Dokumentation der Referenzimplementation der Machbarkeitsstudie
+\end{itemize}
+
+\vspace{0.5em}
+\noindent
+\begin{textblock*}{5cm}[0,0](14.93cm,277mm)
+	\includegraphics[keepaspectratio,width=5cm]{img/FHZ_Logo}
+\end{textblock*}
+
+\newpage
+
+\begin{textblock*}{5cm}[0,0](15cm,0.7cm)
+	\includegraphics[keepaspectratio,width=2.7cm]{img/HSLU_Logo_Header}
+\end{textblock*}
 
 \section{Ergebnisse}
+Wie in der Aufgabenstellung beschrieben wurden zwei Konzepte ausgearbeitet. Das eine konzentrierte sich auf das automatische Auffinden von Exemplaren im Hochregallager selbst, während das andere eine Station voraussieht, welche fehlplatzierte Exemplare vor dem Einlagern identifiert und den betreffenden Behälter ausschleust (in Abbildung \ref{fig:PosAntennen} sind die Antennenposition dieser Station dargestellt).
 
-\begin{textblock*}{5cm}[0,0](15.3cm,277mm)
-	\includegraphics[keepaspectratio,width=5cm]{img/FHZ_Logo}
-\end{textblock*}
+\begin{figure}[htb]
+	\centering
+	\includegraphics[keepaspectratio,width=\textwidth]{Position_Antennen}
+	\caption{Positionierung der LongRange Antennen des zweiten Konzepts}
+	\label{fig:PosAntennen}
+\end{figure}
 
-\newpage
+In einer nächsten Versuchsphase konnte verifiziert werden, dass die Hardware, welche im Moment auf dem Markt existiert für das erste Konzept (der vollautomatischen Suche) nicht geeignet ist, und dieses daher für die Machbarkeitsstudie nicht weiter beachtet wurde.
 
-\begin{textblock*}{5cm}[0,0](15cm,0.7cm)
-	\includegraphics[keepaspectratio,width=2.7cm]{img/HSLU_Logo_Header}
-\end{textblock*}
+Diese wurde in der nächsten Phase für Konzept Zwei ausgearbeitet und kam zum Schluss, dass diese Lösung technisch machbar ist, und sich finanziell für den Kunden lohnt. Um diese Ergebnisse zu validieren wurde eine Referenzimplementation erarbeitet, welche beim Kunden vor Ort das Lösungskonzept verifizierte. Die Machbarkeitsstudie empfiehlt die Implementierung dieses Konzeptes in einer weiteren Bachelorarbeit.
 
 \section{Lösungskonzept}
+Das ganze Projekt wurde iterativ-inkrementell in zweiwöchigen Sprints durchgeführt. Da das Projekt jedoch mit sehr vielen Unbekannten konfrontiert war, entstand dabei nicht ein Prototyp, der durch das ganze Projekt weiterentwickelt wurde, sondern eine Anzahl unterschiedlicher Artefakte (Anleitungen, Konzepte, Versuche, Machbarkeitsstudie, Referenzimplementation).
 
-\section{Spezielle Herausforderungen}
-
-\section{Ausblick}
+Von den zwei erarbeiteten Konzepte, wurde nur eines für die Machbarkeitsstudie weiter beachtet. Dieses sieht zwei LongRange HF RFID Antennen und einen in einem Mikrocomputer integrierten Leser vor. Die zwei Antennen werden für eine grössere Abdeckung und für die Sicherheit einer vollständigen Auslesung aller RFID Tags gebraucht. Sollte ein deplatziertes Exemplar gefunden werden, so soll der Behälter direkt ausgeschleust werden. Die Machbarkeitsstudie identifiziert die Kosten dieser Lösung als 15'000 CHF (10'000 für Anpassungen des Lagersystems).
 
 \begin{textblock*}{5cm}[0,0](14.93cm,277mm)
 	\includegraphics[keepaspectratio,width=5cm]{img/FHZ_Logo}
@@ -124,12 +151,20 @@
 	\includegraphics[keepaspectratio,width=2.7cm]{img/HSLU_Logo_Header}
 \end{textblock*}
 
-TEXT
+\section{Spezielle Herausforderungen}
+Die Herausforderungen in diesem Projekt lagen vor allem in der Wissensbeschaffung. Beide Teammitglieder waren nicht vertraut mit der Durchführung einer Machbarkeitsstudie und es musste daher zuerst eine Recherche durchgeführt werden, wie eine Machbarkeitsstudie durchgeführt werden soll.
 
+Weiter war die Beschaffung eines Budgets für die Anschaffung der Hardware eine spezielle Hürde. Keiner der identifizierten Hersteller konnten Leihgaben zur Verfügung stellen und sowohl die Hochschule wie auch der Kunde konnten keine grösseren Geldbeträge allozieren, sodass der präferierte Hersteller beachtet werden konnte. Es musste also vonseiten des Projektteams eine kreative Lösung gefunden werden.
+
+\section{Ausblick}
+Die Machbarkeitsstudie sieht vor, dass die erarbeitete Lösung in einer weiteren Bachelorarbeit durchgeführt wird. Weiter wird ein klarer Budgetbetrag vorgesehen, welcher vom Kunden erbracht werden muss, bevor die Arbeit durchgeführt werden kann. Namentlich ist dies die Anschaffung der Hardware vom vorgesehenen Hersteller.
+
+Wird die Lösung wie im Konzept ausgearbeitet entwickelt, so besitzt sie einen grossen Neuheitsgrad, da HF RFID Chips in einer spezialisierten Umgebung (ausschliesslich Bibliotheken und deren Lager) eingesetzt werden, und dort noch keine Fertiglösungen für ein solches System existieren.
+
+\vspace{0.5em}
+\noindent
 \begin{textblock*}{5cm}[0,0](14.93cm,277mm)
 	\includegraphics[keepaspectratio,width=5cm]{img/FHZ_Logo}
 \end{textblock*}
-
-\newpage
 
 \end{document}
