@@ -1,6 +1,6 @@
 \documentclass[
 	a4paper
-]{scrreprt}
+]{scrartcl}
 
 %%% PACKAGES %%%
 
@@ -43,7 +43,7 @@
 
 \usepackage{csquotes}
 
-% Clickable Links to Websites and chapters
+% Clickable Links to Websites and sections
 \usepackage{hyperref}
 
 % Change page rotation
@@ -65,17 +65,42 @@
 
 \pagenumbering{gobble}
 
-\begin{titlepage}
-	\begin{textblock*}{5cm}[0,0](15.1cm,1cm)
-		\includegraphics[keepaspectratio,width=5cm]{img/HSLU_Logo}
-	\end{textblock*}
-	
-	TEXT
+\begin{textblock*}{5cm}[0,0](15.1cm,1cm)
+	\includegraphics[keepaspectratio,width=5cm]{img/HSLU_Logo}
+\end{textblock*}
 
-	\begin{textblock*}{5cm}[0,0](15.3cm,277mm)
-		\includegraphics[keepaspectratio,width=5cm]{img/FHZ_Logo}
-	\end{textblock*}
-\end{titlepage}
+\vspace*{2cm}
+
+\noindent
+\textbf{\Huge{RFID markierte Exemplare}} \\
+
+\vspace{0.5em}
+
+\bgroup
+% Remove padding of the table
+\setlength\tabcolsep{0cm}
+
+% Table itself
+\begin{Large}
+\noindent
+\begin{tabularx}{\textwidth}{p{5cm}X}
+	\textbf{Themenbereiche:} & \\
+	\textbf{Studierende:} & Pascal Baumann, Dane Wicki\\
+	\textbf{Betreuungsperson:} & Martin Jud\\
+	\textbf{Experte:} & Urs Gehrig\\
+	\textbf{Auftraggebende:} & Speicherbibliothek Luzern\\
+	\textbf{Keywords:} & RFID, Machbarkeitsstudie\\
+\end{tabularx}
+\end{Large}
+\egroup
+
+\section{Aufgabenstellung}
+
+\section{Ergebnisse}
+
+\begin{textblock*}{5cm}[0,0](15.3cm,277mm)
+	\includegraphics[keepaspectratio,width=5cm]{img/FHZ_Logo}
+\end{textblock*}
 
 \newpage
 
@@ -83,7 +108,11 @@
 	\includegraphics[keepaspectratio,width=2.7cm]{img/HSLU_Logo_Header}
 \end{textblock*}
 
-TEXT
+\section{Lösungskonzept}
+
+\section{Spezielle Herausforderungen}
+
+\section{Ausblick}
 
 \begin{textblock*}{5cm}[0,0](14.93cm,277mm)
 	\includegraphics[keepaspectratio,width=5cm]{img/FHZ_Logo}
