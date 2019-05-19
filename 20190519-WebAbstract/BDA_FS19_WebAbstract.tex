@@ -1,0 +1,106 @@
+\documentclass[
+	a4paper
+]{scrreprt}
+
+%%% PACKAGES %%%
+
+% add unicode support and use german as language
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+% Use Helvetica as font
+\usepackage[scaled]{helvet}
+\renewcommand\familydefault{\sfdefault}
+\usepackage[T1]{fontenc}
+
+% Better tables
+\usepackage{tabularx}
+
+% Better enumerisation env
+\usepackage{enumitem}
+
+% Use graphics
+\usepackage{graphicx}
+
+% Have subfigures and captions
+\usepackage{subcaption}
+
+% Be able to include PDFs in the file
+\usepackage{pdfpages}
+
+% Have custom abstract heading
+\usepackage{abstract}
+
+% Need a list of equation
+\usepackage{tocloft}
+\usepackage{ragged2e}
+
+% Better equation environment
+\usepackage{amsmath}
+
+% Symbols for most SI units
+\usepackage{siunitx}
+
+\usepackage{csquotes}
+
+% Clickable Links to Websites and chapters
+\usepackage{hyperref}
+
+% Change page rotation
+\usepackage{pdflscape}
+
+% Symbols like checkmark
+\usepackage{amssymb}
+\usepackage{pifont}
+
+\usepackage[absolute]{textpos}
+
+%%% PATH DEFINITIONS %%%
+% Define the path were images are found
+\graphicspath{{./img/}{./pdf/}}
+
+%%% DOCUMENT %%%
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\begin{titlepage}
+	\begin{textblock*}{5cm}[0,0](15.1cm,1cm)
+		\includegraphics[keepaspectratio,width=5cm]{img/HSLU_Logo}
+	\end{textblock*}
+	
+	TEXT
+
+	\begin{textblock*}{5cm}[0,0](15.3cm,277mm)
+		\includegraphics[keepaspectratio,width=5cm]{img/FHZ_Logo}
+	\end{textblock*}
+\end{titlepage}
+
+\newpage
+
+\begin{textblock*}{5cm}[0,0](15cm,0.7cm)
+	\includegraphics[keepaspectratio,width=2.7cm]{img/HSLU_Logo_Header}
+\end{textblock*}
+
+TEXT
+
+\begin{textblock*}{5cm}[0,0](14.93cm,277mm)
+	\includegraphics[keepaspectratio,width=5cm]{img/FHZ_Logo}
+\end{textblock*}
+
+\newpage
+
+\begin{textblock*}{5cm}[0,0](15cm,0.7cm)
+	\includegraphics[keepaspectratio,width=2.7cm]{img/HSLU_Logo_Header}
+\end{textblock*}
+
+TEXT
+
+\begin{textblock*}{5cm}[0,0](14.93cm,277mm)
+	\includegraphics[keepaspectratio,width=5cm]{img/FHZ_Logo}
+\end{textblock*}
+
+\newpage
+
+\end{document}
