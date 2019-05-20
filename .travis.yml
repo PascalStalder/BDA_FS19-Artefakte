@@ -19,6 +19,7 @@ deploy:
   provider: releases
   api_key: $GIT_AUTH
   skip_cleanup: true
+  file_glob: true
   file:
     - "./*/*.pdf" 
   on:
