@@ -20,6 +20,6 @@ deploy:
   api_key: $GIT_AUTH
   skip_cleanup: true
   file:
-    - for file in ./*/*.pdf; do [ -f "$file" ] || break; echo $file; done
+    - for file in ./*/*.pdf; do [ -f "$file" ] || break; $file; done
   on:
     tags: true
