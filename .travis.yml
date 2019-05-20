@@ -13,12 +13,4 @@ cache:
     - $HOME/.texlive
 
 script:
-  - cd 20190301-Anforderungen
-  - pdflatex -interaction=nonstopmode -halt-on-error 20190301-Anforderungen.tex
-  - pdflatex -interaction=nonstopmode -halt-on-error 20190301-Anforderungen.tex
-  - cd ../20190319-Protokoll
-  - pdflatex -interaction=nonstopmode -halt-on-error 20190319_SitzungsprotokollSprintReview.tex
-  - pdflatex -interaction=nonstopmode -halt-on-error 20190319_SitzungsprotokollSprintReview.tex
-  - cd ../20190519-WebAbstract
-  - pdflatex -interaction=nonstopmode -halt-on-error BDA_FS19_WebAbstract.tex
-  - pdflatex -interaction=nonstopmode -halt-on-error BDA_FS19_WebAbstract.tex
+  - for i in ./*/*.tex; do [ -f "$i" ] || break; file=${i##**/}; directory=${i%"$file"}; cd $directory; pdflatex -interaction=nonstopmode -halt-on-error $file; cd ..; done
