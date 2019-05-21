@@ -81,11 +81,14 @@ sortlocale=de_DE
 \makeatletter
 \patchcmd{\scr@startchapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
 \makeatother
-%%% DOCUMENT %%%
 
+%%% Fallback DocumentVersion if Builded local
+\providecommand{\docversion}{0.0-localBuild}
+
+%%% DOCUMENT %%%
 \begin{document}
 
-\chapter{Projektanforderungen}
+\chapter{Projektanforderungen v.\docversion}
 Zeil: Mittels einer Machbarkeitsstudie und einem Proof of Concept soll untersucht werden ob es möglich ist bis zu 120 RFID Tags in einem Behälter mit der Dimension 600x400x320mm zu identifizieren.
 
 \begin{itemize}
