@@ -82,6 +82,10 @@ sortlocale=de_DE
 \makeatletter
 \patchcmd{\scr@startchapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
 \makeatother
+
+%%% Fallback DocumentVersion if Builded local
+\providecommand{\docversion}{0.0-localBuild}
+
 %%% DOCUMENT %%%
 
 \begin{document}
@@ -96,6 +100,8 @@ sortlocale=de_DE
 \large{Author: Dane Wicki}\\
 \noindent
 \large{Datum: \today}\\
+\noindent
+\large{Version: \docversion}\\
 \end{titlepage}
 
 \noindent
