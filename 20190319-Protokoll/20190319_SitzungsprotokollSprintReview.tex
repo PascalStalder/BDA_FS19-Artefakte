@@ -52,7 +52,6 @@
 \usepackage{pifont}
 
 \usepackage[absolute]{textpos}
-\providecommand{\docversion}{0.0-localBuild}
 
 % Glossary, hyperref, babel, polyglossia, inputenc, fontenc must be loaded before this package if they are used
 \usepackage{glossaries}
@@ -83,6 +82,9 @@ sortlocale=de_DE
 \makeatletter
 \patchcmd{\scr@startchapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
 \makeatother
+%%% Fallback DocumentVersion if Builded local
+\providecommand{\docversion}{0.0-localBuild}
+
 %%% DOCUMENT %%%
 
 \begin{document}
