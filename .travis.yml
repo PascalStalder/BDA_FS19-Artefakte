@@ -13,7 +13,7 @@ cache:
     - $HOME/.texlive
 
 script:
-  - for i in ./*/*.tex; do [ -f "$i" ] || break; file=${i##**/}; directory=${i%"$file"}; cd $directory; [ -f .version ] && source .version || VERSION=0.0 ;pdflatex -interaction=nonstopmode -halt-on-error "\providecommand{\docversion}{${VERSION}.${TRAVIS_BUILD_NUMBER}} \input{${file}}"; cd ..; done
+  - for i in ./*/*.tex; do [ -f "$i" ] || break; file=${i##**/}; directory=${i%"$file"}; cd $directory; [ -f .version ] && source .version || VERSION=0.0 ; pdflatex -interaction=nonstopmode -halt-on-error $file; pdflatex -interaction=nonstopmode -halt-on-error "\providecommand{\docversion}{${VERSION}.${TRAVIS_BUILD_NUMBER}} \input{${file}}"; cd ..; done
 
 before_deploy:
   - source .env
