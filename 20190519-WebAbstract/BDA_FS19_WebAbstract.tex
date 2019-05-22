@@ -95,9 +95,9 @@ Behälter-Hochregallager}} \\
 \egroup
 
 \section{Aufgabenstellung}
-Im Hochregallager der Speicherbibliothek werden momentan bis zu 110'000 Behältern mit verschiedenen Exemplaren, von welchen viele mit RFID Tags ausgestattet sind, gelagert. Die Behälter werden manuell von Menschen befüllt und anschliessend voll autonom an einen Lagerplatz gefahren. Zeitweise können auch gewisse Exemplare wieder aus den Behältern entnommen werden um dieses Exemplar zu Lesen, Scannen oder einer der teilnehmenden Bibliotheken zurückzusenden. Während dem Vorgang des Lagerns und Entnehmen der Exemplare werden weiterhin Menschen für das Befüllen und Entleeren der Behälter verwendet. Dies birgt die Gefahr, dass eine Person aus Versehen ein Exemplar in einen falschen Behälter einsortiert. Und so das Exemplar nur sehr umständlich wiedergefunden werden kann.
+Im Hochregallager der Speicherbibliothek werden momentan bis zu 110'000 Behältern mit verschiedenen Exemplaren, von welchen viele mit RFID Tags ausgestattet sind, gelagert. Die Behälter werden manuell von Menschen befüllt und entleert, und anschliessend voll autonom an einen Lagerplatz gefahren. Zeitweise können auch gewisse Exemplare wieder aus den Behältern entnommen werden, um dieses Exemplar zu Lesen, Scannen oder einer der teilnehmenden Bibliotheken zurückzusenden. Während dem Vorgang des Lagerns und Entnehmen der Exemplare werden weiterhin Menschen für das Befüllen und Entleeren der Behälter verwendet. Dies birgt die Gefahr, dass eine Person aus Versehen ein Exemplar in einen falschen Behälter einsortiert. Dies führt zu dem Umstand, dass das Exemplar nur sehr umständlich wiedergefunden werden kann.
 
-Ziel dieser Arbeit ist es, mittels einer Machbarkeitsstudie und einem Proof of Concept zu untersuchen, ob es technisch realisierbar ist, Exemplare, welche mit RFID Tags ausgerüstet sind im Hochregallager der Speicherbibliothek zu finden.
+Ziel dieser Arbeit ist es, mittels einer Machbarkeitsstudie und einem Proof of Concept zu untersuchen, ob es technisch realisierbar ist, Exemplare, welche mit RFID Tags ausgerüstet sind, im Hochregallager der Speicherbibliothek zu finden.
 
 Insbesondere sind dem Kunden folgende Resultate vorzulegen:
 \begin{itemize}[noitemsep]
@@ -119,7 +119,7 @@ Insbesondere sind dem Kunden folgende Resultate vorzulegen:
 \end{textblock*}
 
 \section{Ergebnisse}
-Wie in der Aufgabenstellung beschrieben, wurden zwei Konzepte ausgearbeitet. Während das Erste sich auf das automatische Auffinden von Exemplaren im Hochregallager selber konzentriert, befasst sich das zweite Konzept mit der Entwicklung einer Kontrollstation, welches Exemplare vor der Einlagerung identifizieren kann und den betreffenden Behälter aus dem Einlagerungsprozess ausschliesst (in Abbildung \ref{fig:PosAntennen} sind die Antennenpositionen dieser Station dargestellt).
+Wie in der Aufgabenstellung beschrieben, wurden zwei Konzepte ausgearbeitet. Während das Erste sich auf das automatische Auffinden von Exemplaren im Hochregallager konzentriert, befasst sich das zweite Konzept mit der Entwicklung einer Kontrollstation, welches falsch platzierte Exemplare vor der Einlagerung identifizieren kann und den betreffenden Behälter aus dem Einlagerungsprozess ausschliesst (in Abbildung \ref{fig:PosAntennen} sind die Antennenpositionen dieser Station dargestellt).
 
 \begin{figure}[htb]
 	\centering
@@ -128,14 +128,14 @@ Wie in der Aufgabenstellung beschrieben, wurden zwei Konzepte ausgearbeitet. Wä
 	\label{fig:PosAntennen}
 \end{figure}
 
-n der darauffolgenden Versuchsphase konnte verifiziert werden, dass die Hardware, welche im Moment auf dem Markt existiert, für das Konzept der vollautomatischen Suche im Hochregallager, nicht geeignet ist und daher dieses für die Machbarkeitsstudie nicht weiter beachtet wurde.
+In der darauffolgenden Versuchsphase konnte verifiziert werden, dass die Hardware, welche im Moment auf dem Markt existiert, für das Konzept der vollautomatischen Suche im Hochregallager, nicht geeignet ist und daher dieses für die Machbarkeitsstudie nicht weiter beachtet wurde.
 
 Für die Machbarkeitsstudie wurde daher das Konzept der Kontrollstation ausgewählt. Die Machbarkeitsstudie kam zum Schluss, dass diese Lösung technisch machbar ist, und sich finanziell für den Kunden lohnt. Sie empfiehlt weiter die Implementierung des Konzeptes in einer weiteren Bachelorarbeit. Um die Ergebnisse der Machbarkeitsstudie zu validieren wurde eine Referenzimplementation erarbeitet, welche beim Kunden vor Ort das Lösungskonzept der Kontrollstation verifizierte.
 
 \section{Lösungskonzept}
 Das ganze Projekt wurde iterativ-inkrementell in zweiwöchigen Sprints durchgeführt. Da das Projekt jedoch mit sehr vielen Unbekannten konfrontiert war, entstand dabei nicht ein Prototyp, welcher durch das ganze Projekt weiterentwickelt wurde, sondern eine Anzahl unterschiedlicher Artefakte wie Anleitungen, Konzepte, Versuche, Machbarkeitsstudie, und eine Referenzimplementation.
 
-Von den zwei erarbeiteten Konzepte, wurde nur eines für die Machbarkeitsstudie weiter beachtet. Dieses sieht zwei LongRange HF RFID Antennen und einen in einem Mikrocomputer integrierten Leser vor. Die zwei Antennen werden für eine grössere Abdeckung und Wahrscheinlichkeit einer vollständigen Auslesung aller RFID Tags benötigt. Sollte ein deplatziertes Exemplar gefunden werden, so soll der Behälter direkt ausgeschleust werden. Die Machbarkeitsstudie identifiziert die Kosten dieser Lösung als 15'000 CHF (10'000 für Anpassungen des Lagersystems).
+Von den zwei erarbeiteten Konzepte, wurde nur eines für die Machbarkeitsstudie weiter beachtet. Dieses sieht zwei LongRange HF RFID Antennen und einen in einem Mikrocomputer integrierten Leser vor. Die zwei Antennen werden für eine grössere Abdeckung und Wahrscheinlichkeit einer vollständigen Auslesung aller RFID Tags benötigt. Sollte ein deplatziertes Exemplar gefunden werden, so soll der Behälter direkt ausgeschleust werden. Die Machbarkeitsstudie identifiziert die Kosten dieser Lösung als 20'000 CHF (10'000 für Anpassungen des Lagersystems, 5'500 für Mitarbeiterschulungen).
 
 \begin{textblock*}{5cm}[0,0](14.93cm,277mm)
 	\includegraphics[keepaspectratio,width=5cm]{img/FHZ_Logo}
@@ -150,12 +150,12 @@ Von den zwei erarbeiteten Konzepte, wurde nur eines für die Machbarkeitsstudie 
 \section{Spezielle Herausforderungen}
 Die Herausforderungen in diesem Projekt lagen vor allem in der Wissensbeschaffung. Beide Teammitglieder waren nicht vertraut mit der Durchführung einer Machbarkeitsstudie und es musste daher zuerst eine Recherche durchgeführt werden, wie eine Machbarkeitsstudie durchgeführt werden soll.
 
-Weiter war die Beschaffung eines Budgets, für die Anschaffung der Hardware, eine spezielle Hürde. Keiner der identifizierten Hersteller konnten Leihgaben zur Verfügung stellen. Sowohl die Hochschule wie auch der Kunde konnten keine grösseren Geldbeträge zur Verfügung stellen, sodass die Beschaffung, durch eine erneute Identifizierung von weiteren Herstellern, welche Ihren Sitz im asiatischen Raum haben, verzögert wurde.
+Weiter war die Beschaffung eines Budgets, für die Anschaffung der Hardware, eine spezielle Hürde. Keiner der identifizierten Hersteller konnten Leihgaben zur Verfügung stellen. Sowohl die Hochschule wie auch der Kunde konnten keine grösseren Geldbeträge zur Verfügung stellen, sodass die Beschaffung, durch eine erneute Identifizierung von weiteren Herstellern welche Ihren Sitz im asiatischen Raum haben, verzögert wurde.
 
 \section{Ausblick}
-Die Machbarkeitsstudie sieht vor, dass die erarbeitete Lösung in einer weiteren Bachelorarbeit durchgeführt wird. Weiter wird ein klarer Budgetbetrag vorgesehen, welcher vom Kunden erbracht werden muss, bevor die Arbeit durchgeführt werden kann. Namentlich ist dies die Anschaffung der Hardware vom vorgesehenen Hersteller und die Bereitstellung einer Schnittstelle zur automatisierten Ausschleusung durch den Entwickler des Lagerverwaltungssystems.
+Die Machbarkeitsstudie sieht vor, dass die erarbeitete Lösung in einer weiteren Bachelorarbeit durchgeführt wird. Weiter wird ein klarer Budgetbetrag vorgesehen, welcher vom Kunden erbracht werden muss, bevor die Arbeit durchgeführt werden kann. Namentlich ist dies die Anschaffung der Hardware vom vorgesehenen Hersteller und der Auftrag für die Bereitstellung einer Schnittstelle zur automatisierten Ausschleusung durch den Entwickler des Lagerverwaltungssystems.
 
-Wird die Lösung wie im Konzept ausgearbeitet entwickelt, so besitzt sie einen grossen Neuheitsgrad, da HF RFID Chips in einer spezialisierten Umgebung (ausschliesslich Bibliotheken und deren Lager) eingesetzt werden, und dort noch keine Fertiglösungen für ein System, welche diese Dichte von Tags verarbeiten kann, existieren.
+Wird die Lösung wie im Konzept ausgearbeitet entwickelt, so besitzt sie einen grossen Neuheitsgrad, da HF RFID Chips in einer spezialisierten Umgebung (ausschliesslich Bibliotheken und deren Lager) eingesetzt werden. In diesem Umfeld existieren noch keine Fertiglösungen für ein System, welche diese Dichte von Tags verarbeiten kann.
 
 \vspace{0.5em}
 \noindent
