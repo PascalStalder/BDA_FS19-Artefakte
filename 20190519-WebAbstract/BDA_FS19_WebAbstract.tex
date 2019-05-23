@@ -58,6 +58,9 @@
 % Change line spacing
 \renewcommand{\baselinestretch}{0.9}
 
+%%% PATH DEFINITIONS %%%
+\graphicspath{{./img/}}
+
 %%% DOCUMENT %%%
 
 \begin{document}
@@ -123,7 +126,7 @@ Wie in der Aufgabenstellung beschrieben, wurden zwei Konzepte ausgearbeitet. Wä
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[keepaspectratio,width=\textwidth]{Position_Antennen}
+	\includegraphics[keepaspectratio,width=\textwidth]{Positionierung_Antennen}
 	\caption{Positionierung der LongRange Antennen des zweiten Konzepts}
 	\label{fig:PosAntennen}
 \end{figure}
@@ -135,8 +138,6 @@ Für die Machbarkeitsstudie wurde daher das Konzept der Kontrollstation ausgewä
 \section{Lösungskonzept}
 Das ganze Projekt wurde iterativ-inkrementell in zweiwöchigen Sprints durchgeführt. Da das Projekt jedoch mit sehr vielen Unbekannten konfrontiert war, entstand dabei nicht ein Prototyp, welcher durch das ganze Projekt weiterentwickelt wurde, sondern eine Anzahl unterschiedlicher Artefakte wie Anleitungen, Konzepte, Versuche, Machbarkeitsstudie, und eine Referenzimplementation.
 
-Von den zwei erarbeiteten Konzepte, wurde nur eines für die Machbarkeitsstudie weiter beachtet. Dieses sieht zwei LongRange HF RFID Antennen und einen in einem Mikrocomputer integrierten Leser vor. Die zwei Antennen werden für eine grössere Abdeckung und Wahrscheinlichkeit einer vollständigen Auslesung aller RFID Tags benötigt. Sollte ein deplatziertes Exemplar gefunden werden, so soll der Behälter direkt ausgeschleust werden. Die Machbarkeitsstudie identifiziert die Kosten dieser Lösung auf circa 20'000 CHF (10'000 für Anpassungen des Lagersystems, 5'500 für Mitarbeiterschulungen).
-
 \begin{textblock*}{5cm}[0,0](14.93cm,277mm)
 	\includegraphics[keepaspectratio,width=5cm]{img/FHZ_Logo}
 \end{textblock*}
@@ -146,6 +147,8 @@ Von den zwei erarbeiteten Konzepte, wurde nur eines für die Machbarkeitsstudie 
 \begin{textblock*}{5cm}[0,0](15cm,0.7cm)
 	\includegraphics[keepaspectratio,width=2.7cm]{img/HSLU_Logo_Header}
 \end{textblock*}
+
+Von den zwei erarbeiteten Konzepte, wurde nur eines für die Machbarkeitsstudie weiter beachtet. Dieses sieht zwei LongRange HF RFID Antennen und einen in einem Mikrocomputer integrierten Leser vor. Die zwei Antennen werden für eine grössere Abdeckung und Wahrscheinlichkeit einer vollständigen Auslesung aller RFID Tags benötigt. Sollte ein deplatziertes Exemplar gefunden werden, so soll der Behälter direkt ausgeschleust werden. Die Machbarkeitsstudie identifiziert die Kosten dieser Lösung auf circa 20'000 CHF (10'000 für Anpassungen des Lagersystems, 5'500 für Mitarbeiterschulungen).
 
 \section{Spezielle Herausforderungen}
 Die Herausforderungen in diesem Projekt lagen vor allem in der Wissensbeschaffung. Beide Teammitglieder waren nicht vertraut mit der Durchführung einer Machbarkeitsstudie und es musste daher zuerst eine Recherche durchgeführt werden, wie eine Machbarkeitsstudie durchgeführt werden soll.
