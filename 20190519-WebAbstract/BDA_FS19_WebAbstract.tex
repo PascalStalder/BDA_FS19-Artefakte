@@ -1,9 +1,7 @@
 \documentclass[
 	a4paper
 ]{scrartcl}
-
-%%% PACKAGES %%%
-
+\usepackage[a-2b]{pdfx}
 % add unicode support and use german as language
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
@@ -11,7 +9,6 @@
 % Use Helvetica as font
 \usepackage[scaled]{helvet}
 \renewcommand\familydefault{\sfdefault}
-\usepackage[T1]{fontenc}
 
 % Better tables
 \usepackage{tabularx}
@@ -43,6 +40,8 @@
 
 \usepackage{csquotes}
 
+\usepackage{hyperxmp}
+
 % Clickable Links to Websites and sections
 \usepackage{hyperref}
 
@@ -60,6 +59,20 @@
 
 %%% PATH DEFINITIONS %%%
 \graphicspath{{./img/}}
+
+\hypersetup{
+	pdftitle={Suche von mit RFID-ausgerüsteten Einzelexemplaren in vollautomatischem Behälter-Hochregallager},
+	pdfauthor={Pascal Baumann, Dane Wicki},
+	pdfdate={2019-05-23},
+	pdfcopyright={Copyright (C) 2019, Pascal Baumann, Dane Wicki},
+	pdfsubject={RFID},
+	pdfkeywords={RFID, Logistik, Machbarkeitsstudie, Suchalgorithmus},
+	pdflang={de},
+	pdfmetalang={de},
+	pdfapart={2},
+	pdfaconformance={B},
+	pdfbytes={\pdffilesize{\jobname.pdf}} % Requires pdflatex
+}
 
 %%% DOCUMENT %%%
 
@@ -165,5 +178,4 @@ Wird die Lösung wie im Konzept ausgearbeitet entwickelt, so besitzt sie einen g
 \begin{textblock*}{5cm}[0,0](14.93cm,277mm)
 	\includegraphics[keepaspectratio,width=5cm]{img/FHZ_Logo}
 \end{textblock*}
-
 \end{document}
