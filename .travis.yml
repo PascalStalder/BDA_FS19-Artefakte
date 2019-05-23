@@ -4,7 +4,7 @@ sudo: false
 
 branches:
   except:
-    /^v[0-9]+\.[0-9]+\.[0-9]+-Prerelease/
+    /^v[0-9]+\.[0-9]+\.[0-9]+/
 
 install:
   - cp -n texlive* /tmp/
@@ -29,8 +29,8 @@ deploy:
     file_glob: true
     prerelease: true
     file: "./*/*.pdf"
-    tag_name: "v${VERSION}.${TRAVIS_BUILD_NUMBER}-Prerelease"
-    name: "v${VERSION}.${TRAVIS_BUILD_NUMBER}-Prerelease"
+    tag_name: "v${VERSION}.${TRAVIS_BUILD_NUMBER}"
+    name: "v${VERSION}.${TRAVIS_BUILD_NUMBER}"
     on:
       tags: false
       branch: "master"
