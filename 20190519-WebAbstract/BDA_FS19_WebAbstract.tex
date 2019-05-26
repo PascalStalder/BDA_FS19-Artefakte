@@ -79,10 +79,11 @@
 \vspace*{2cm}
 
 \noindent
-\textbf{\LARGE{Erfassung von Anzahl und Position von Personen in Sitzungszimmer}} \\
 
-\vspace{0.5em}
+\centerline{\textbf{\LARGE{Smart-Office People Counting}}} 
 
+
+\vspace{2em}
 \bgroup
 % Remove padding of the table
 \setlength\tabcolsep{0cm}
@@ -103,16 +104,17 @@
 \egroup
 
 \section{Aufgabenstellung}
-Gebäudesteuerungen sollen in Zukunft mehr auf die Belegungen und das Verhalten der Bewohner eingehen, anstatt einem fixen Schema zu folgen. Voraussetzung dafür ist, dass die Steuerung, die Belegung und das Verhalten der Bewohner kennt.\\
-Dafür soll in dieser Diplomarbeit das Potential kostengünstiger thermischer Kamerasystemen, zur Erfassung des Nutzerverhaltens in Büroräumen evaluiert werden. Mittels State-of-the-Art Bildanalyse und Deep-Learning soll versucht werden, die Belegung und den Personenfluss eines Sitzungszimmers zu bestimmen.\\
+Gebäudesteuerungen sollen in Zukunft mehr auf die Belegungen und das Verhalten der Nutzer eingehen, anstatt einem fixen Schema zu folgen. Voraussetzung dafür ist, dass die Steuerung die Belegung und das Verhalten der Nutzer kennt.\\
+Dafür soll in dieser Diplomarbeit das Potential von kostengünstigen, thermischen Kamerasystemen zur Erfassung des Nutzerverhaltens in Büroräumen evaluiert werden. Mittels State-of-the-Art Bildanalyse und Deep-Learning soll versucht werden, die Belegung und den Personenfluss eines Sitzungszimmers zu bestimmen.\\
 Ein Sitzungsraum der Hochschule Luzern in Horw wurde dafür mit zwei Infrarotkameras ausgerüstet. Zusätzlich steht eine herkömmliche Kamera als Referenz zur Verfügung.\\
 \\
-Ziel dieser Arbeit ist es ein System zu entwickeln, welches die Anzahl und Position der Personen auf einem Infrarotbild bestimmt. Dabei soll aufgezeigt werden, welche Schwierigkeiten bei der Entwicklung eines solchen Systems beachtet werden müssen und wie diese überwunden werden können.
+Ziel dieser Arbeit ist es, ein System zu entwickeln, welches die Anzahl und Position der Personen auf einem Infrarotbild bestimmt. Dabei soll aufgezeigt werden, welchen Schwierigkeiten einem bei der Entwicklung eines solchen Systems begegnen und wie diese überwunden werden können.\\
 Insbesondere sind folgende Resultate vorzulegen:
-\begin{itemize}[noitemsep]
-	\item Zwei implementierte Algorithmen zur Lösung der Problemstellung.
-	\item Eine ausführliche Evaluation des Systems.
-	\item Möglichkeiten und Vorschläge zur Lösung der aufgetretenen Schwierigkeiten und zur Verbesserung des Systems.
+\begin{itemize}[]
+	\item Zwei implementierte Algorithmen zur Lösung der Problemstellung
+	\item Eine ausführliche Evaluation des Systems
+	\item Möglichkeiten und Vorschläge zur Lösung der aufgetretenen Schwierigkeiten 
+	\item  Möglichkeiten und Vorschläge zur Verbesserung des Systems
 \end{itemize}
 
 \vspace{0.5em}
@@ -128,7 +130,7 @@ Insbesondere sind folgende Resultate vorzulegen:
 \end{textblock*}
 
 \section{Ergebnisse}
-Wie in der Aufgabenstellung beschrieben wurden zwei passende Algorithmen implementiert. Es wurde ein Convolutional Neural Network(CCN) trainiert und als Referenz dazu eine relativ simple Threshold-Methode. Diese beiden Algorithmen wurden getestet und evaluiert. Dabei zeigte sich, dass beide Algorithmen ein relativ gutes Ergebnis erzielen. Die grössten gefundenen Schwierigkeiten für das System sind wie erwartet fremde Wärmequellen aber auch Isolierende Kleider. Dabei stellen Laptops die in Intensivem Betrieb sind, von Personen erwärmte Stühle und Radiatoren die grössten Probleme. Die Threshold-Methode kann diese, wenn sie in einem ählichen Wärmebereich befinden wie Menschen, ab einer gewissen Grösse nicht von Personen unterscheiden. Das CNN hat ähnliche Probleme mit diesen Wärmequellen, es konnte jedoch gezeigt werden, dass mit spezifischem Training das CNN so erweitert werden kann, dass es diese nicht mehr als Personen erkennt. 
+Wie in der Aufgabenstellung beschrieben, wurden zwei passende Algorithmen implementiert. Es wurde ein Convolutional Neural Network (CCN) trainiert und als Referenz dazu eine relativ simple Threshold-Methode. Diese beiden Algorithmen wurden getestet und evaluiert. Dabei zeigte sich, dass beide Algorithmen ein zufriedenstellendes Ergebnis erzielen. Die grössten gefundenen Schwierigkeiten für das System sind wie erwartet fremde Wärmequellen, aber auch isolierende Kleider. Dabei stellen Laptops, die in intensivem Betrieb sind, von Personen erwärmte Stühle und Radiatoren die grössten Probleme dar. Wenn sich diese in einem ähnlichem Wärmebereich befindet wie die einer Person, hat die Threshold-Methode Schwierigkeiten. Ab einer gewissen Grösse, kann sie diese Wärmequellen nicht mehr von Personen unterscheiden. Das CNN hat ähnliche Probleme mit diesen Wärmequellen. Es konnte jedoch gezeigt werden, dass mit spezifischem Training das CNN so erweitert werden kann, dass es diese nicht mehr als Personen erkennt. 
 
 \begin{figure}[H]
 	\begin{subfigure}{\linewidth}
@@ -146,8 +148,10 @@ Wie in der Aufgabenstellung beschrieben wurden zwei passende Algorithmen impleme
 \end{figure}
 
 \section{Lösungskonzept}
-Das ganze Projekt wurde iterativ-inkrementell durchgeführt. Da es sich um ein Exploratives Projekt handelte, wurden Ideen in kleinem Rahmen umgesetzt, evaluiert und wenn sie sich bewährten weiterentwickelt. Das Projekt teilte sich darüber hinaus in drei Phasen auf. Die Intialrecherche, die Implementierung der ausgewählten Algorithmen und die Evaluation des Systems.\\
-da die Auflösung der Bilder mit 80x64 Pixel sehr klein ist 
+Das ganze Projekt wurde iterativ-inkrementell durchgeführt. Da es sich um ein exploratives Projekt handelte, wurden Ideen in kleinem Rahmen umgesetzt, evaluiert und, wenn sie sich bewährten, weiterentwickelt. Das Projekt teilte sich darüber hinaus in drei Phasen auf. Die Intialrecherche, die Implementierung der ausgewählten Algorithmen und die Evaluation des Systems.\\
+Während der Initialrecherche wurde der Stand der Technik, in der Objekterkennung im infrarotbereich, ermittelt. danach wurden die gefundenen Algorithmen evaluiert und daraus zwei Algorithmen ausgewählt.
+In der Implementationsphase wurden diese zwei Algorithmen so implementiert, dass sie ausgeführt und während dem Testen möglichst einfach angepasst werden konnten. 
+Abschliessend wurde das System evaluiert und dabei festgehalten wo das System Mängel aufweist und wie es weiter optimiert werden könnte.
 
 \begin{textblock*}{5cm}[0,0](14.93cm,277mm)
 	\includegraphics[keepaspectratio,width=5cm]{img/FHZ_Logo}
@@ -161,15 +165,19 @@ da die Auflösung der Bilder mit 80x64 Pixel sehr klein ist
 
 
 \section{Spezielle Herausforderungen}
-Eine Herausforderung in dieser Aufgabe war es die Bilder von Infrarotkameras zu erhalten. Denn sie boten nicht, wie sonst üblich, eine Webschnittstelle an, sondern konnten nur über UDP-Broadcasts angesprochen werden. Zudem konnte man zwar Einzelbilder anfordern, diese waren qualitativ aber sehr schlecht, weshalb die Schnittstelle nachträglich auf die Verwendung von Streams abgeändert werden musste.
-Zudem war das finden einer guten Komposition des CNN's schwierig. Dies, weil die meisten Papers zwar aussagen, dass sie ein CNN verwenden, aber nicht wie dieses aufgebaut ist. Auch wurden insgesammt nicht viele Quellen gefunden die sich in dieser Art mit Bilder von so niedriger Auflösung befassen.
+Eine Herausforderung in dieser Aufgabe war es, die Bilder von Infrarotkameras zu erhalten. Denn sie boten nicht, wie sonst üblich, eine Webschnittstelle an, sondern konnten nur über UDP-Broadcasts angesprochen werden.\\
+Über diese Verbindung wurden anfangs Einzelbilder angefordert. Diese waren qualitativ aber sehr schlecht, weshalb die Schnittstelle nachträglich auf die Verwendung von Streams abgeändert werden musste.
+Zudem war das Finden einer guten Komposition des CNN's schwierig. Dies, weil die meisten Papers zwar aussagen, dass sie ein CNN verwenden, aber nicht wie dieses aufgebaut ist. Auch wurden insgesamt nicht viele Quellen gefunden, welche sich in dieser Art mit Bilder von so niedriger Auflösung befassen.
 
 \section{Ausblick}
-Um ein solche System fertig aufzubauen müsste hauptsächlich noch in verbessertes Training, des CNN's inverstiert werden. Dies zeigt eine Vielversprechende Basis und sollte mit den richtigen Trainigsdaten und einer passenden Konfiguration in der Lage sein zuverlässig, Personen und deren Position zu erkennen.\\
-Soll das System breiter angewendet werden und in verschiedenen Umfelder zum Einsatz kommen, muss genau analysiert werden, ob die Auflösung der Kameras ausreicht. Denn wie auf dem Bild zu sehen steht sehr wenig Information zur Verfügung. Sobald Personen grosse Unterschiede in Temperatur und Haltung aufweisen, wird es schwierig diese eindeutig zu Identifizieren.
+Um ein solches System fertig aufzubauen, müsste hauptsächlich noch in verbessertes Training des CNN's investiert werden. Dieses zeigt eine vielversprechende Basis und sollte, mit den richtigen Trainigsdaten und einer passenden Konfiguration, in der Lage sein, zuverlässig Personen und deren Position zu erkennen.\\
+Soll das System breiter angewendet werden und in verschiedenen Umfeldern zum Einsatz kommen, muss genau analysiert werden, ob die Auflösung der Kameras ausreicht. Denn wie auf dem Bild \ref{fig:irexample} zu sehen, steht sehr wenig Information zur Verfügung. Sobald Personen grosse Unterschiede in Temperatur oder Haltung aufweisen, wird es schwierig diese eindeutig zu Identifizieren.
 
 \begin{figure}[H]
+	\centering
 	\includegraphics[height=5cm]{exampleIRImage}
+	\caption{Beispielbild}
+	\label{fig:irexample}
 \end{figure}
 
 \vspace{0.5em}
