@@ -57,6 +57,9 @@
 
 \usepackage[absolute]{textpos}
 
+%make figures stay where they belong
+\usepackage{float}
+
 % Change line spacing
 \renewcommand{\baselinestretch}{0.9}
 
@@ -76,8 +79,7 @@
 \vspace*{2cm}
 
 \noindent
-\textbf{\LARGE{Suche von mit RFID-ausgerüsteten Einzelexemplaren in vollautomatischem
-Behälter-Hochregallager}} \\
+\textbf{\LARGE{Erfassung von Anzahl und Position von Personen in Sitzungszimmer}} \\
 
 \vspace{0.5em}
 
@@ -89,26 +91,28 @@ Behälter-Hochregallager}} \\
 \begin{large}
 \noindent
 \begin{tabularx}{\textwidth}{p{5cm}X}
-	\textbf{Themenbereiche:} & RFID, Automatisierte Arbeitsprozesse, Machbarkeitsstudie\\
-	\textbf{Studierende:} & Pascal Baumann, Dane Wicki\\
-	\textbf{Betreuungsperson:} & Martin Jud\\
-	\textbf{Experte:} & Urs Gehrig\\
-	\textbf{Auftraggebende:} & Verein Kooperative Speicherbibliothek Schweiz\\
-	\textbf{Keywords:} & Logistik, RFID, Machbarkeitsstudie, Suchalgorithmus\\
+	\textbf{Themenbereiche:} & Infrarot, Objekterkennung, CNN\\
+	\textbf{Studierende:} & Pascal Stalder\\
+	\textbf{Betreuungsperson:} & Olivier Steiger\\
+	\textbf{Co-Betreuungsperson:} & Martin Camenzind\\
+	\textbf{Experte:} & Stefan Chiappori\\
+	\textbf{Auftraggebende:} & iHomeLab\\
+	\textbf{Keywords:} & Infrarot, People counting, Objekterkennung, Smart Office\\
 \end{tabularx}
 \end{large}
 \egroup
 
 \section{Aufgabenstellung}
-In der Kooperativen Speicherbibliothek Schweiz werden Exemplare der dem Verein zugehörigen Bibliotheken eingelagert. Das heisst, das Exemplar der Bibliothek wird gereinigt und inventarisiert eingelagert. Sollte ein Bibliotheksbenutzer ein Exemplar dieses Werks anfordern, wird das Exemplar per Kurier an die jeweilige Bibliothek verschickt. Journale oder Magazine werden vorzugsweise eingescannt und in digitaler Form an den Benutzer übergeben, sofern dies so vom Benutzer bestellt wurde. Sowohl die beteiligten Bibliotheken, wie auch die Bibliotheksbenutzer sind daher an einer zeitgerechten Lieferung interessiert. Dies bedeutet für die Speicherbibliothek, dass alle Prozesse und Abläufe effizient und zuverlässig ablaufen müssen. Verzögerungen in Zwischenschritten können sich auf die ganze Auslieferung des Exemplars, in physischer oder digitaler Form, auswirken.
-
-Ziel dieser Arbeit ist es, mittels einer Machbarkeitsstudie und einem Proof of Concept zu untersuchen, ob es technisch realisierbar ist, Exemplare, welche mit RFID Tags ausgerüstet sind, im Hochregallager der Speicherbibliothek zu finden.
-
-Insbesondere sind dem Kunden folgende Resultate vorzulegen:
+Gebäudesteuerungen sollen in Zukunft mehr auf die Belegungen und das Verhalten der Bewohner eingehen, anstatt einem fixen Schema zu folgen. Voraussetzung dafür ist, dass die Steuerung, die Belegung und das Verhalten der Bewohner kennt.\\
+Dafür soll in dieser Diplomarbeit das Potential kostengünstiger thermischer Kamerasystemen, zur Erfassung des Nutzerverhaltens in Büroräumen evaluiert werden. Mittels State-of-the-Art Bildanalyse und Deep-Learning soll versucht werden, die Belegung und den Personenfluss eines Sitzungszimmers zu bestimmen.\\
+Ein Sitzungsraum der Hochschule Luzern in Horw wurde dafür mit zwei Infrarotkameras ausgerüstet. Zusätzlich steht eine herkömmliche Kamera als Referenz zur Verfügung.\\
+\\
+Ziel dieser Arbeit ist es ein System zu entwickeln, welches die Anzahl und Position der Personen auf einem Infrarotbild bestimmt. Dabei soll aufgezeigt werden, welche Schwierigkeiten bei der Entwicklung eines solchen Systems beachtet werden müssen und wie diese überwunden werden können.
+Insbesondere sind folgende Resultate vorzulegen:
 \begin{itemize}[noitemsep]
-	\item Zwei ausgearbeiteten Konzepte
-	\item Eine Machbarkeitsstudie zu einem ausgewählten Konzept
-	\item Eine Dokumentation der Referenzimplementation der Machbarkeitsstudie
+	\item Zwei implementierte Algorithmen zur Lösung der Problemstellung.
+	\item Eine ausführliche Evaluation des Systems.
+	\item Möglichkeiten und Vorschläge zur Lösung der aufgetretenen Schwierigkeiten und zur Verbesserung des Systems.
 \end{itemize}
 
 \vspace{0.5em}
@@ -124,21 +128,26 @@ Insbesondere sind dem Kunden folgende Resultate vorzulegen:
 \end{textblock*}
 
 \section{Ergebnisse}
-Wie in der Aufgabenstellung beschrieben, wurden zwei Konzepte ausgearbeitet. Während das Erste sich auf das automatische Auffinden von Exemplaren im Hochregallager konzentriert, befasst sich das zweite Konzept mit der Entwicklung einer Kontrollstation, welches deplatzierte Exemplare vor der Einlagerung identifizieren kann und den betreffenden Behälter aus dem Einlagerungsprozess ausschliesst (in Abbildung \ref{fig:PosAntennen} sind die Antennenpositionen dieser Station dargestellt).
+Wie in der Aufgabenstellung beschrieben wurden zwei passende Algorithmen implementiert. Es wurde ein Convolutional Neural Network(CCN) trainiert und als Referenz dazu eine relativ simple Threshold-Methode. Diese beiden Algorithmen wurden getestet und evaluiert. Dabei zeigte sich, dass beide Algorithmen ein relativ gutes Ergebnis erzielen. Die grössten gefundenen Schwierigkeiten für das System sind wie erwartet fremde Wärmequellen aber auch Isolierende Kleider. Dabei stellen Laptops die in Intensivem Betrieb sind, von Personen erwärmte Stühle und Radiatoren die grössten Probleme. Die Threshold-Methode kann diese, wenn sie in einem ählichen Wärmebereich befinden wie Menschen, ab einer gewissen Grösse nicht von Personen unterscheiden. Das CNN hat ähnliche Probleme mit diesen Wärmequellen, es konnte jedoch gezeigt werden, dass mit spezifischem Training das CNN so erweitert werden kann, dass es diese nicht mehr als Personen erkennt. 
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[keepaspectratio,width=\textwidth]{Positionierung_Antennen}
-	\caption{Positionierung der LongRange Antennen des zweiten Konzepts}
-	\label{fig:PosAntennen}
+\begin{figure}[H]
+	\begin{subfigure}{\linewidth}
+		\centering
+		\includegraphics[keepaspectratio, height=4cm]{cnnSummary}
+		\caption{Zusammenfassung der CNN Ergebnisse}
+		\label{fig:cnnSummary}		
+	\end{subfigure}
+	\begin{subfigure}{\linewidth}
+		\centering
+		\includegraphics[keepaspectratio, height=4cm]{threshSummary}
+		\caption{Zusammenfassung der Ergebnisse der Threshold-Methode}
+		\label{fig:threshSummary}		
+	\end{subfigure}
 \end{figure}
 
-In der darauffolgenden Versuchsphase konnte verifiziert werden, dass die Hardware, welche im Moment auf dem Markt existiert, für das Konzept der vollautomatischen Suche im Hochregallager, nicht geeignet ist und daher dieses für die Machbarkeitsstudie nicht weiter beachtet wurde.
-
-Für die Machbarkeitsstudie wurde daher das Konzept der Kontrollstation ausgewählt. Die Machbarkeitsstudie kam zum Schluss, dass diese Lösung technisch machbar ist, und sich finanziell für den Kunden lohnt. Sie empfiehlt weiter die Implementierung des Konzeptes in einer weiteren Bachelorarbeit. Um die Ergebnisse der Machbarkeitsstudie zu validieren wurde eine Referenzimplementation erarbeitet, welche beim Kunden vor Ort das Lösungskonzept der Kontrollstation verifizierte.
-
 \section{Lösungskonzept}
-Das ganze Projekt wurde iterativ-inkrementell in zweiwöchigen Sprints durchgeführt. Da das Projekt jedoch mit sehr vielen Unbekannten konfrontiert war, entstand dabei nicht ein Prototyp, welcher durch das ganze Projekt weiterentwickelt wurde, sondern eine Anzahl unterschiedlicher Artefakte wie Anleitungen, Konzepte, Versuche, Machbarkeitsstudie, und eine Referenzimplementation.
+Das ganze Projekt wurde iterativ-inkrementell durchgeführt. Da es sich um ein Exploratives Projekt handelte, wurden Ideen in kleinem Rahmen umgesetzt, evaluiert und wenn sie sich bewährten weiterentwickelt. Das Projekt teilte sich darüber hinaus in drei Phasen auf. Die Intialrecherche, die Implementierung der ausgewählten Algorithmen und die Evaluation des Systems.\\
+da die Auflösung der Bilder mit 80x64 Pixel sehr klein ist 
 
 \begin{textblock*}{5cm}[0,0](14.93cm,277mm)
 	\includegraphics[keepaspectratio,width=5cm]{img/FHZ_Logo}
@@ -150,17 +159,18 @@ Das ganze Projekt wurde iterativ-inkrementell in zweiwöchigen Sprints durchgef�
 	\includegraphics[keepaspectratio,width=2.7cm]{img/HSLU_Logo_Header}
 \end{textblock*}
 
-Von den zwei erarbeiteten Konzepte, wurde nur eines für die Machbarkeitsstudie weiter beachtet. Dieses sieht zwei LongRange HF RFID Antennen und einen in einem Mikrocomputer integrierten Leser vor. Die zwei Antennen werden für eine grössere Abdeckung und Wahrscheinlichkeit einer vollständigen Auslesung aller RFID Tags benötigt. Sollte ein deplatziertes Exemplar gefunden werden, so soll der Behälter direkt ausgeschleust werden. Die Machbarkeitsstudie identifiziert die Kosten dieser Lösung auf circa 20'000 CHF (10'000 für Anpassungen des Lagersystems, 5'500 für Mitarbeiterschulungen).
 
 \section{Spezielle Herausforderungen}
-Die Herausforderungen in diesem Projekt lagen vor allem in der Wissensbeschaffung. Beide Teammitglieder waren nicht vertraut mit der Durchführung einer Machbarkeitsstudie und es musste daher zuerst eine Recherche durchgeführt werden, wie eine Machbarkeitsstudie durchgeführt werden soll.
-
-Weiter war die Beschaffung eines Budgets, für die Anschaffung der Hardware, eine spezielle Hürde. Keiner der identifizierten Hersteller konnten Leihgaben zur Verfügung stellen. Sowohl die Hochschule wie auch der Kunde konnten keine grösseren Geldbeträge zur Verfügung stellen, sodass die Beschaffung, durch eine erneute Identifizierung von weiteren Herstellern welche Ihren Sitz im asiatischen Raum haben, verzögert wurde.
+Eine Herausforderung in dieser Aufgabe war es die Bilder von Infrarotkameras zu erhalten. Denn sie boten nicht, wie sonst üblich, eine Webschnittstelle an, sondern konnten nur über UDP-Broadcasts angesprochen werden. Zudem konnte man zwar Einzelbilder anfordern, diese waren qualitativ aber sehr schlecht, weshalb die Schnittstelle nachträglich auf die Verwendung von Streams abgeändert werden musste.
+Zudem war das finden einer guten Komposition des CNN's schwierig. Dies, weil die meisten Papers zwar aussagen, dass sie ein CNN verwenden, aber nicht wie dieses aufgebaut ist. Auch wurden insgesammt nicht viele Quellen gefunden die sich in dieser Art mit Bilder von so niedriger Auflösung befassen.
 
 \section{Ausblick}
-Die Machbarkeitsstudie sieht vor, dass die erarbeitete Lösung in einer weiteren Bachelorarbeit durchgeführt wird. Weiter wird ein klarer Budgetbetrag vorgesehen, welcher vom Kunden erbracht werden muss, bevor die Arbeit durchgeführt werden kann. Namentlich ist dies die Anschaffung der Hardware vom vorgesehenen Hersteller und der Auftrag für die Bereitstellung einer Schnittstelle zur automatisierten Ausschleusung durch den Entwickler des Lagerverwaltungssystems.
+Um ein solche System fertig aufzubauen müsste hauptsächlich noch in verbessertes Training, des CNN's inverstiert werden. Dies zeigt eine Vielversprechende Basis und sollte mit den richtigen Trainigsdaten und einer passenden Konfiguration in der Lage sein zuverlässig, Personen und deren Position zu erkennen.\\
+Soll das System breiter angewendet werden und in verschiedenen Umfelder zum Einsatz kommen, muss genau analysiert werden, ob die Auflösung der Kameras ausreicht. Denn wie auf dem Bild zu sehen steht sehr wenig Information zur Verfügung. Sobald Personen grosse Unterschiede in Temperatur und Haltung aufweisen, wird es schwierig diese eindeutig zu Identifizieren.
 
-Wird die Lösung wie im Konzept ausgearbeitet entwickelt, so besitzt sie einen grossen Neuheitsgrad, da HF RFID Chips in einer spezialisierten Umgebung (ausschliesslich Bibliotheken und deren Lager) eingesetzt werden. In diesem Umfeld existieren noch keine Fertiglösungen für ein System, welche diese Dichte von Tags verarbeiten kann.
+\begin{figure}[H]
+	\includegraphics[height=5cm]{exampleIRImage}
+\end{figure}
 
 \vspace{0.5em}
 \noindent
