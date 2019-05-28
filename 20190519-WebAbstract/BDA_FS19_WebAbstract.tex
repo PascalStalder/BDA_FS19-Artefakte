@@ -110,7 +110,7 @@ Ein Sitzungsraum der Hochschule Luzern in Horw wurde dafür mit zwei Infrarotkam
 \\
 Ziel dieser Arbeit ist es, ein System zu entwickeln, welches die Anzahl und Position der Personen auf einem Infrarotbild bestimmt. Dabei soll aufgezeigt werden, welchen Schwierigkeiten man, bei der Entwicklung eines solchen Systems, begegnet und wie diese überwunden werden können.\\
 Insbesondere sind folgende Resultate vorzulegen:
-\begin{itemize}[]
+\begin{itemize}
 	\item Zwei implementierte Algorithmen zur Lösung der Problemstellung
 	\item Eine ausführliche Evaluation des Systems
 	\item Möglichkeiten und Vorschläge zur Lösung der aufgetretenen Schwierigkeiten 
@@ -130,42 +130,54 @@ Insbesondere sind folgende Resultate vorzulegen:
 \end{textblock*}
 
 \section{Ergebnisse}
-Wie in der Aufgabenstellung beschrieben, wurden zwei passende Algorithmen implementiert. Es wurde ein Convolutional Neural Network (CCN) trainiert und als Referenz dazu eine simple Threshold-Methode verwendet. Diese beiden Algorithmen wurden getestet und evaluiert. Dabei zeigte sich, dass beide Algorithmen ein zufriedenstellendes Ergebnis erzielen. Die grössten gefundenen Schwierigkeiten für das System sind wie erwartet fremde Wärmequellen, aber auch isolierende Kleider. Dabei stellen Laptops, die in intensivem Betrieb sind, von Personen erwärmte Stühle und Radiatoren die grössten Probleme dar. Wenn sich diese in einem ähnlichem Wärmebereich befindet wie die einer Person, hat die Threshold-Methode Schwierigkeiten. Ab einer gewissen Grösse, kann sie diese Wärmequellen nicht mehr von Personen unterscheiden. Das CNN hat ähnliche Probleme mit diesen Wärmequellen. Es konnte jedoch gezeigt werden, dass mit spezifischem Training das CNN so erweitert werden kann, dass es diese nicht mehr als Personen erkennt. 
-
-\begin{table}[H]
-	\centering
-	\caption{Zusammenfassung der Ergebnisse beider Algorithmen}
-	\begin{tabularx}{.7\textwidth}{Xrr}
-		\hline
-		\textbf{Ergebnisse der Algorithmen} & \textbf{CNN} & \textbf{Threshold}\\
-		\hline 
-		\textit{Gesamtanzahl Personen in Bilder} & \multicolumn{2}{c}{718}\\
-		\hline
-		\textit{True Positive} & 657 & 650\\
-		\hline
-		\textit{False Positive} & 120 & 142\\
-		\hline
-		\textit{False Negative} & 61 & 68\\
-		\hline
-		\multicolumn{3}{c}{\textbf{Stats}}\\
-		\hline
-		\textit{Recall} & \textit{91.5\%} & \textit{90.5\%} \\
-		\hline  
-		\textit{Precision} & \textit{84.5\%} & \textit{82.1\%}\\
-		\hline
-		\textit{F1-Score} & \textit{87.9\%} & \textit{86.1\%}\\
-		\hline
-	\end{tabularx}
+Wie in der Aufgabenstellung beschrieben, wurden zwei passende Algorithmen implementiert. Es wurde ein Convolutional Neural Network (CCN) trainiert und als Referenz dazu eine simple Threshold-Methode verwendet. Diese beiden Algorithmen wurden getestet und evaluiert. Dabei zeigte sich, dass beide Algorithmen ein zufriedenstellendes Ergebnis erzielen. Die grössten gefundenen Schwierigkeiten für das System sind wie erwartet fremde Wärmequellen, aber auch isolierende Kleider. Dabei stellen Laptops, die in intensivem Betrieb sind, von Personen erwärmte Stühle und Radiatoren die grössten Probleme dar. Wenn sich diese in einem ähnlichem Wärmebereich befinden wie die einer Person, hat die Threshold-Methode Schwierigkeiten. Ab einer gewissen Grösse, kann sie diese Wärmequellen nicht mehr von Personen unterscheiden. Das CNN hat ähnliche Probleme mit diesen Wärmequellen. Es konnte jedoch gezeigt werden, dass mit spezifischem Training, auf diese Arten von fremden Wärmequellen, das CNN so erweitert werden kann, dass es diese nicht mehr als Personen erkennt. 
+{
+	\renewcommand{\arraystretch}{1.3}
 	
-	\label{tbl:heatSources}
-\end{table}
-
+	\begin{table}[H]
+		\scriptsize
+		\centering
+		\begin{tabularx}{.5\textwidth}{Xrr}\\
+			\hline
+			\multicolumn{3}{c}{\textbf{Ergebnisse Der Allgorithmen}}\\
+			\hline
+			\textbf{Kategorien} & \textbf{CNN} & \textbf{Threshold}\\
+			\hline 
+			\textit{Gesamtanzahl Personen in Bilder} & 718 & 718\\
+			\hline
+			\textit{True Positive} & 657 & 650\\
+			\hline
+			\textit{False Positive} & 120 & 142\\
+			\hline
+			\textit{False Negative} & 61 & 68\\
+		\end{tabularx}
+		\caption{Zusammenfassung der Ergebnisse beider Algorithmen}
+		\label{tab:results}
+	\end{table}
+	\begin{table}[H]
+		\scriptsize
+		\centering
+		\begin{tabularx}{.5\textwidth}{Xrr}
+			\hline
+			\multicolumn{3}{c}{\textbf{Statistische Auswertung}}\\
+			\hline
+			\textbf{Kategorien} & \textbf{CNN} & \textbf{Threshold}\\
+			\hline
+			\textit{Recall} & 91.5\% & 90.5\%\\
+			\hline  
+			\textit{Precision} & 84.5\% & 82.1\%\\
+			\hline
+			\textit{F1-Score} & 87.9\% & 86.1\%\\
+			\hline
+		\end{tabularx}
+		\caption{Statistische Auswertung der Performance beider Algorithmen}
+		\label{tbl:heatSources}
+	\end{table}
+}
 
 \section{Lösungskonzept}
 Das ganze Projekt wurde iterativ-inkrementell durchgeführt. Da es sich um ein exploratives Projekt handelte, wurden Ideen in kleinem Rahmen umgesetzt, evaluiert und, wenn sie sich bewährten, weiterentwickelt. Das Projekt teilte sich darüber hinaus in drei Phasen auf. Die Intialrecherche, die Implementierung der ausgewählten Algorithmen und die Evaluation des Systems.\\
-Während der Initialrecherche wurde der Stand der Technik, in der Objekterkennung im infrarotbereich, ermittelt. danach wurden die gefundenen Algorithmen evaluiert und daraus zwei Algorithmen ausgewählt.
-In der Implementationsphase wurden diese zwei Algorithmen so implementiert, dass sie ausgeführt und während dem Testen möglichst einfach angepasst werden konnten. 
-Abschliessend wurde das System evaluiert und dabei festgehalten wo das System Mängel aufweist und wie es weiter optimiert werden könnte.
+Während der Initialrecherche wurde der Stand der Technik, in der Objekterkennung im infrarotbereich, ermittelt. danach wurden die gefundenen Algorithmen evaluiert und daraus zwei Algorithmen ausgewählt. Da der Zeitliche Rahmen dieses Projekt es nicht zuliesse bei de Auswahl der Algorithmen vorallem darauf geachtet ob und wie diese in ähnlichen Projekten erfolgreich eingesetzt wuerden könnte.
 
 \begin{textblock*}{5cm}[0,0](14.93cm,277mm)
 	\includegraphics[keepaspectratio,width=5cm]{img/FHZ_Logo}
@@ -177,21 +189,33 @@ Abschliessend wurde das System evaluiert und dabei festgehalten wo das System M�
 	\includegraphics[keepaspectratio,width=2.7cm]{img/HSLU_Logo_Header}
 \end{textblock*}
 
+In der Implementationsphase wurden diese zwei Algorithmen so implementiert, dass sie ausgeführt und in der Testphase möglichst einfach angepasst werden konnten. 
+Abschliessend wurde das System evaluiert und dabei festgehalten wo das System Mängel aufweist und wie es weiter optimiert werden könnte.
+
 
 \section{Spezielle Herausforderungen}
 Eine Herausforderung in dieser Aufgabe war es, die Bilder von Infrarotkameras zu erhalten. Denn sie boten nicht, wie sonst üblich, eine Webschnittstelle an, sondern konnten nur über UDP-Broadcasts angesprochen werden.\\
 Über diese Verbindung wurden anfangs Einzelbilder angefordert. Diese waren qualitativ aber sehr schlecht, weshalb die Schnittstelle nachträglich auf die Verwendung von Streams abgeändert werden musste.
-Zudem war das Finden einer guten Komposition des CNN's schwierig. Dies, weil die meisten Papers zwar aussagen, dass sie ein CNN verwenden, aber nicht wie dieses aufgebaut ist. Auch wurden insgesamt nicht viele Quellen gefunden, welche sich in dieser Art mit Bilder von so niedriger Auflösung befassen.
+Zudem war das Finden einer guten Komposition des CNN's schwierig. Dies, weil die meisten Papers zwar aussagen, dass sie ein CNN verwenden, aber nicht wie dieses aufgebaut ist. Auch wurden insgesamt nicht viele Quellen gefunden, welche sich in dieser Art mit Bilder von so niedriger Auflösung, 80x64 Pixel, befassen.
 
 \section{Ausblick}
 Um ein solches System fertig aufzubauen, müsste hauptsächlich noch in verbessertes Training des CNN's investiert werden. Dieses zeigt eine vielversprechende Basis und sollte, mit den richtigen Trainigsdaten und einer passenden Konfiguration, in der Lage sein, zuverlässig Personen und deren Position zu erkennen.\\
-Soll das System breiter angewendet werden und in verschiedenen Umfeldern zum Einsatz kommen, muss genau analysiert werden, ob die Auflösung der Kameras ausreicht. Denn wie auf dem Bild \ref{fig:irexample} zu sehen, steht sehr wenig Information zur Verfügung. Sobald Personen grosse Unterschiede in Temperatur oder Haltung aufweisen, wird es schwierig diese eindeutig zu Identifizieren.
+Soll das System breiter angewendet werden und in verschiedenen Umfeldern zum Einsatz kommen, muss genau analysiert werden, ob die Auflösung der Kameras ausreicht und ob die Positionierung der Kamera an der Decke für das Setting Sinn ergibt. Denn wie auf dem Bild \ref{fig:irexample} zu sehen, steht im vergleich zu \ref{fig:refexample} sehr wenig Information zur Verfügung. Sobald Personen grosse Unterschiede in Temperatur oder Haltung aufweisen, wird es schwierig diese eindeutig zu Identifizieren.
 
 \begin{figure}[H]
-	\centering
-	\includegraphics[height=5cm]{exampleIRImage}
-	\caption{Beispielbild}
-	\label{fig:irexample}
+	\begin{subfigure}{.5\linewidth}
+		\centering
+		\includegraphics[keepaspectratio, height=4cm]{exampleIRImage}
+		\caption{Beispielinfrarotbild}
+		\label{fig:irexample}
+	\end{subfigure}
+	\begin{subfigure}{.4\linewidth}
+		\centering
+		\includegraphics[keepaspectratio, height=4cm]{exampleGround}
+		\caption{Referenzbild}
+		\label{fig:refexample}
+	\end{subfigure}
+	\caption{Wärmebild und Referenkameraufnahmen}
 \end{figure}
 
 \vspace{0.5em}
@@ -199,4 +223,5 @@ Soll das System breiter angewendet werden und in verschiedenen Umfeldern zum Ein
 \begin{textblock*}{5cm}[0,0](14.93cm,277mm)
 	\includegraphics[keepaspectratio,width=5cm]{img/FHZ_Logo}
 \end{textblock*}
+
 \end{document}
