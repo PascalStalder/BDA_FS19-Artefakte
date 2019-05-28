@@ -108,7 +108,7 @@ Gebäudesteuerungen sollen in Zukunft mehr auf die Belegungen und das Verhalten 
 Dafür soll in dieser Diplomarbeit das Potential von kostengünstigen, thermischen Kamerasystemen zur Erfassung des Nutzerverhaltens in Büroräumen evaluiert werden. Mittels State-of-the-Art Bildanalyse und Deep-Learning soll versucht werden, die Belegung und den Personenfluss eines Sitzungszimmers zu bestimmen.\\
 Ein Sitzungsraum der Hochschule Luzern in Horw wurde dafür mit zwei Infrarotkameras ausgerüstet. Zusätzlich steht eine herkömmliche Kamera als Referenz zur Verfügung.\\
 \\
-Ziel dieser Arbeit ist es, ein System zu entwickeln, welches die Anzahl und Position der Personen auf einem Infrarotbild bestimmt. Dabei soll aufgezeigt werden, welchen Schwierigkeiten einem bei der Entwicklung eines solchen Systems begegnen und wie diese überwunden werden können.\\
+Ziel dieser Arbeit ist es, ein System zu entwickeln, welches die Anzahl und Position der Personen auf einem Infrarotbild bestimmt. Dabei soll aufgezeigt werden, welchen Schwierigkeiten man, bei der Entwicklung eines solchen Systems, begegnet und wie diese überwunden werden können.\\
 Insbesondere sind folgende Resultate vorzulegen:
 \begin{itemize}[]
 	\item Zwei implementierte Algorithmen zur Lösung der Problemstellung
@@ -130,22 +130,36 @@ Insbesondere sind folgende Resultate vorzulegen:
 \end{textblock*}
 
 \section{Ergebnisse}
-Wie in der Aufgabenstellung beschrieben, wurden zwei passende Algorithmen implementiert. Es wurde ein Convolutional Neural Network (CCN) trainiert und als Referenz dazu eine relativ simple Threshold-Methode. Diese beiden Algorithmen wurden getestet und evaluiert. Dabei zeigte sich, dass beide Algorithmen ein zufriedenstellendes Ergebnis erzielen. Die grössten gefundenen Schwierigkeiten für das System sind wie erwartet fremde Wärmequellen, aber auch isolierende Kleider. Dabei stellen Laptops, die in intensivem Betrieb sind, von Personen erwärmte Stühle und Radiatoren die grössten Probleme dar. Wenn sich diese in einem ähnlichem Wärmebereich befindet wie die einer Person, hat die Threshold-Methode Schwierigkeiten. Ab einer gewissen Grösse, kann sie diese Wärmequellen nicht mehr von Personen unterscheiden. Das CNN hat ähnliche Probleme mit diesen Wärmequellen. Es konnte jedoch gezeigt werden, dass mit spezifischem Training das CNN so erweitert werden kann, dass es diese nicht mehr als Personen erkennt. 
+Wie in der Aufgabenstellung beschrieben, wurden zwei passende Algorithmen implementiert. Es wurde ein Convolutional Neural Network (CCN) trainiert und als Referenz dazu eine simple Threshold-Methode verwendet. Diese beiden Algorithmen wurden getestet und evaluiert. Dabei zeigte sich, dass beide Algorithmen ein zufriedenstellendes Ergebnis erzielen. Die grössten gefundenen Schwierigkeiten für das System sind wie erwartet fremde Wärmequellen, aber auch isolierende Kleider. Dabei stellen Laptops, die in intensivem Betrieb sind, von Personen erwärmte Stühle und Radiatoren die grössten Probleme dar. Wenn sich diese in einem ähnlichem Wärmebereich befindet wie die einer Person, hat die Threshold-Methode Schwierigkeiten. Ab einer gewissen Grösse, kann sie diese Wärmequellen nicht mehr von Personen unterscheiden. Das CNN hat ähnliche Probleme mit diesen Wärmequellen. Es konnte jedoch gezeigt werden, dass mit spezifischem Training das CNN so erweitert werden kann, dass es diese nicht mehr als Personen erkennt. 
 
-\begin{figure}[H]
-	\begin{subfigure}{\linewidth}
-		\centering
-		\includegraphics[keepaspectratio, height=3cm]{cnnSummary}
-		\caption{Zusammenfassung der CNN Ergebnisse}
-		\label{fig:cnnSummary}		
-	\end{subfigure}
-	\begin{subfigure}{\linewidth}
-		\centering
-		\includegraphics[keepaspectratio, height=3cm]{threshSummary}
-		\caption{Zusammenfassung der Ergebnisse der Threshold-Methode}
-		\label{fig:threshSummary}		
-	\end{subfigure}
-\end{figure}
+\begin{table}[H]
+	\centering
+	\caption{Zusammenfassung der Ergebnisse beider Algorithmen}
+	\begin{tabularx}{.7\textwidth}{Xrr}
+		\hline
+		\textbf{Ergebnisse der Algorithmen} & \textbf{CNN} & \textbf{Threshold}\\
+		\hline 
+		\textit{Gesamtanzahl Personen in Bilder} & \multicolumn{2}{c}{718}\\
+		\hline
+		\textit{True Positive} & 657 & 650\\
+		\hline
+		\textit{False Positive} & 120 & 142\\
+		\hline
+		\textit{False Negative} & 61 & 68\\
+		\hline
+		\multicolumn{3}{c}{\textbf{Stats}}\\
+		\hline
+		\textit{Recall} & \textit{91.5\%} & \textit{90.5\%} \\
+		\hline  
+		\textit{Precision} & \textit{84.5\%} & \textit{82.1\%}\\
+		\hline
+		\textit{F1-Score} & \textit{87.9\%} & \textit{86.1\%}\\
+		\hline
+	\end{tabularx}
+	
+	\label{tbl:heatSources}
+\end{table}
+
 
 \section{Lösungskonzept}
 Das ganze Projekt wurde iterativ-inkrementell durchgeführt. Da es sich um ein exploratives Projekt handelte, wurden Ideen in kleinem Rahmen umgesetzt, evaluiert und, wenn sie sich bewährten, weiterentwickelt. Das Projekt teilte sich darüber hinaus in drei Phasen auf. Die Intialrecherche, die Implementierung der ausgewählten Algorithmen und die Evaluation des Systems.\\
